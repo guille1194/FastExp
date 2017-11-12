@@ -14,6 +14,7 @@ import { HistorialService } from "../../providers/historial";
   templateUrl: 'home.html',
 })
 export class HomePage {
+  scannedCode = null;
 
   constructor( private barcodeScanner: BarcodeScanner,
                private toastCtrl: ToastController,
@@ -25,19 +26,8 @@ scan(){
   console.log("Realizando scan...");
 
   if( !this.platform.is('cordova') ){
-    // this._historialService.agregar_historial( "http://google.com");
-    // this._historialService.agregar_historial( "geo:9.976133040865312,-84.00677479055173" );
-    this._historialService.agregar_historial( "MATMSG:TO:fernando.herrera85@gmail.com;SUB:Hola Mundo;BODY:Saludos Fernando;;" );
-//       this._historialService.agregar_historial( `BEGIN:VCARD
-// VERSION:2.1
-// N:Kent;Clark
-// FN:Clark Kent
-// ORG:
-// TEL;HOME;VOICE:12345
-// TEL;TYPE=cell:67890
-// ADR;TYPE=work:;;;
-// EMAIL:clark@superman.com
-// END:VCARD` );
+    //this._historialService.agregar_historial( "MATMSG:TO:fernando.herrera85@gmail.com;SUB:Hola Mundo;BODY:Saludos Fernando;;" );
+
 
     return;
   }
@@ -45,6 +35,7 @@ scan(){
 
   this.barcodeScanner.scan().then( (barcodeData) => {
    // Success! Barcode data is here
+   this.scannedCode = barcodeData.text;
    console.log("result:", barcodeData.text );
    console.log("format:", barcodeData.format );
    console.log("cancelled:", barcodeData.cancelled );

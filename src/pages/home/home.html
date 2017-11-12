@@ -11,7 +11,14 @@
 
   <button ion-button
           block
+          icon-left
           (click)="scan()">
+  <ion-icon name="qr-scanner"></ion-icon>
     Realizar Scan
   </button>
+  <ion-card *ngIf="scannedCode">
+    <ion-card-content>
+      Resultado del Scan: {{ scannedCode }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
