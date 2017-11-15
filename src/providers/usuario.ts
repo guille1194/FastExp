@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { URL_SERVICIOS } from '../config/url.servicios';
@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage';
 export class UsuarioService {
 
   token:string;
-  id_usuario:string;
+  userName:string;
 
   constructor(public http: Http,
               private alertCtrl: AlertController,
@@ -26,22 +26,30 @@ export class UsuarioService {
 
   activo():boolean{
 
-    if( this.token ){
+    if( this.token && this.userName){
       return true;
     }else{
       return false;
     }
   }
 
-  ingresar( correo:string, contrasena:string ){
+  ingresar( userName:string, password:string ){
 
-    let data = new URLSearchParams();
-    data.append("correo", correo);
-    data.append("contrasena", contrasena);
+    /*let data = new URLSearchParams();
+    data.append("userName", userName);
+    data.append("password", password);*/
+    
+    let data = {
+      userName: "userName",
+      password: "password"
+    }
 
-    let url = URL_SERVICIOS + "/login";
+    let url = URL_SERVICIOS + "/signIn";
 
-    return this.http.post( url, data )
+    let header=new Headers({'Content-Type': 'application/json', 'API_KEY':
+    'RWxHdWlsbGVTZUxhQ29tZVhE'});
+
+    return this.http.post( url, data, {headers: header} )
                     .map( resp=>{
 
                     let data_resp = resp.json();
@@ -55,7 +63,7 @@ export class UsuarioService {
                       }).present();
                     }else{
                       this.token = data_resp.token;
-                      this.id_usuario = data_resp.id_usuario;
+                      this.userName = data_resp.userName;
 
                       // guardar storage
                       this.guardar_storage();
@@ -68,7 +76,7 @@ export class UsuarioService {
   cerrar_sesion(){
 
     this.token = null;
-    this.id_usuario = null;
+    this.userName = null;
 
     //guardar storage
     this.guardar_storage();
@@ -79,15 +87,15 @@ export class UsuarioService {
     if( this.platform.is("cordova") ){
       //dispositivo
       this.storage.set('token', this.token );
-      this.storage.set('id_usuario', this.id_usuario)
+      this.storage.set('userName', this.userName)
     }else{
       //computadora
       if( this.token ){
         localStorage.setItem("token", this.token );
-        localStorage.setItem("id_usuario", this.id_usuario );
+        localStorage.setItem("userName", this.userName );
       }else{
         localStorage.removeItem("token");
-        localStorage.removeItem("id_usuario");
+        localStorage.removeItem("userName");
       }
     }
 
@@ -109,10 +117,10 @@ export class UsuarioService {
                                   }
                                 })
 
-                    this.storage.get("id_usuario")
-                                .then( id_usuario => {
-                                  if( id_usuario ){
-                                    this.id_usuario = id_usuario;
+                    this.storage.get("userName")
+                                .then( userName => {
+                                  if( userName ){
+                                    this.userName = userName;
                                   }
                                   resolve();
                                 })
@@ -123,7 +131,7 @@ export class UsuarioService {
         if( localStorage.getItem("token") ){
           //Existe items en el localStorage
           this.token =  localStorage.getItem("token");
-          this.id_usuario =  localStorage.getItem("id_usuario");
+          this.userName =  localStorage.getItem("userName");
         }
 
         resolve();

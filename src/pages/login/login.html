@@ -3,14 +3,7 @@
 
   <ion-navbar>
 
-    <ion-buttons>
-      <button ion-button
-              (click)="viewCtrl.dismiss(false)">
-        Cerrar
-      </button>
-    </ion-buttons>
-
-    <ion-title>Login</ion-title>
+    <ion-title>Inicio Sesion</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -21,22 +14,23 @@
   <ion-list>
 
     <ion-item>
-      <ion-label fixed>Correo</ion-label>
-      <ion-input type="email" [(ngModel)]="correo"></ion-input>
+      <ion-label fixed>Usuario</ion-label>
+      <ion-input type="text" [(ngModel)]="userName"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>Cantrasena</ion-label>
-      <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+      <ion-label fixed>Contrasena</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
   </ion-list>
 
 
   <button ion-button
-          [disabled]=" correo.length < 5 || contrasena.length < 5 "
+          [disabled]=" userName.length < 5 || password.length < 5 "
           block
-          (click)="ingresar()">
+          (click)="ingresar()"
+          >
     Ingresar
   </button>
 

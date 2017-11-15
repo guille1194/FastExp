@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 import { UsuarioService } from '../../providers/usuario';
+import { HomePage } from '../../pages/home/home';
 
 @Component({
   selector: 'page-login',
@@ -9,8 +10,8 @@ import { UsuarioService } from '../../providers/usuario';
 })
 export class LoginPage {
 
-  correo:string = "";
-  contrasena:string = "";
+  userName:string = "";
+  password:string = "";
 
 
   constructor(public navCtrl: NavController,
@@ -21,13 +22,14 @@ export class LoginPage {
 
   ingresar(){
 
-    this._us.ingresar( this.correo, this.contrasena )
+    this._us.ingresar( this.userName, this.password )
             .subscribe( ()=> {
 
               if( this._us.activo() ){
                 this.viewCtrl.dismiss(true);
+                this.navCtrl.setRoot( HomePage );
               }
             })
-  }
+      }
 
 }

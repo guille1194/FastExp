@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/index.paginas';
+import { LoginPage } from '../pages/login/login';
 
 import { AjustesService } from '../providers/ajustes';
 
@@ -27,7 +28,7 @@ export class MyApp {
             if( this._ajustes.ajustes.mostrar_tutorial ){
               this.rootPage = "Introduccion";
             }else{
-              this.rootPage = TabsPage;
+              this.rootPage = LoginPage;
             }
 
               this.platform.pause.subscribe( ()=> {
