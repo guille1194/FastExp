@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 import { UsuarioService } from '../../providers/usuario';
-import { HomePage } from '../../pages/home/home';
+import { TabsPage } from '../../pages/tabs/tabs';
 
 @Component({
   selector: 'page-login',
@@ -26,8 +26,8 @@ export class LoginPage {
             .subscribe( ()=> {
 
               if( this._us.activo() ){
+                this.navCtrl.push( TabsPage );
                 this.viewCtrl.dismiss(true);
-                this.navCtrl.setRoot( HomePage );
               }
             })
       }

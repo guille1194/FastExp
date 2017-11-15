@@ -26,7 +26,7 @@ export class UsuarioService {
 
   activo():boolean{
 
-    if( this.token && this.userName){
+    if( this.token){
       return true;
     }else{
       return false;
@@ -38,18 +38,20 @@ export class UsuarioService {
     /*let data = new URLSearchParams();
     data.append("userName", userName);
     data.append("password", password);*/
-    
-    let data = {
-      userName: "userName",
-      password: "password"
-    }
 
     let url = URL_SERVICIOS + "/signIn";
 
     let header=new Headers({'Content-Type': 'application/json', 'API_KEY':
     'RWxHdWlsbGVTZUxhQ29tZVhE'});
 
-    return this.http.post( url, data, {headers: header} )
+    let options = new RequestOptions({ headers: header });
+
+    let data = JSON.stringify({
+      userName: userName,
+      password: password
+    });
+
+    return this.http.post( url, data, options )
                     .map( resp=>{
 
                     let data_resp = resp.json();
