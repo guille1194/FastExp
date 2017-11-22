@@ -8,6 +8,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 // servicios
 import { HistorialService } from "../../providers/historial";
+import { UsuarioService } from '../../providers/usuario';
 
 @Component({
   selector: 'page-home',
@@ -19,7 +20,8 @@ export class HomePage {
   constructor( private barcodeScanner: BarcodeScanner,
                private toastCtrl: ToastController,
                private platform: Platform,
-               private _historialService: HistorialService ) {
+               private _historialService: HistorialService,
+               private _us: UsuarioService ) {
 }
 
 scan(){
@@ -52,7 +54,6 @@ scan(){
   });
 
 }
-
 
 mostrar_error( mensaje:string ){
 

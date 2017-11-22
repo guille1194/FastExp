@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { URL_SERVICIOS } from '../config/url.servicios';
@@ -26,7 +26,7 @@ export class UsuarioService {
 
   activo():boolean{
 
-    if( this.token){
+    if(this.token){
       return true;
     }else{
       return false;

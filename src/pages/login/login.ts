@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 
 import { UsuarioService } from '../../providers/usuario';
 import { TabsPage } from '../../pages/tabs/tabs';
@@ -17,8 +17,18 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private viewCtrl: ViewController,
+              public alertCtrl: AlertController,
               private _us:UsuarioService ) {
   }
+
+  /*doAlert() {
+  let alert = this.alertCtrl.create({
+    title: 'Error Ingreso',
+    message: 'El usuario y/o contrasena ingresado son incorrectos. ',
+    buttons: ['Ok']
+    });
+  alert.present()
+}*/
 
   ingresar(){
 
@@ -29,7 +39,15 @@ export class LoginPage {
                 this.navCtrl.push( TabsPage );
                 this.viewCtrl.dismiss(true);
               }
+              /*else{
+                let alert = this.alertCtrl.create({
+                  title: 'Error Ingreso',
+                  message: 'El usuario y/o contrasena ingresado son incorrectos. ',
+                  buttons: ['Ok']
+                  });
+                alert.present();
+              }*/
             })
-      }
+  }
 
 }
