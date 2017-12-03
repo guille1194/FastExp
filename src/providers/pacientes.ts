@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 import { UtilitiesService } from './utilities.service';
-import { API_GET_ALL_PATIENTS } from '../config/url.servicios';
+import { API_GET_PATIENT } from '../config/url.servicios';
 import { Patient } from '../models/patient.model';
 
 import 'rxjs/add/operator/map';
@@ -18,7 +18,7 @@ export class PacientesService {
   }
 
   getPatients(): Observable<Patient[]> {
-    let url = API_GET_ALL_PATIENTS;
+    let url = API_GET_PATIENT;
     let options = this.authService.getRequestOptions();
 
     return this.http.get(url, options)
