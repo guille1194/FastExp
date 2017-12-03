@@ -31,7 +31,7 @@ export class HomePage {
                private _us: UsuarioService,
                private _ps: PacientesService,
                private toast: Toast ) {
-                 this._ps.getPatients()
+                 this._ps.getPatientById(this.patient.patientId)
                  .subscribe((response)=>{
                    this.patients = response
                    console.log(this.patients);

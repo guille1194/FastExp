@@ -19,15 +19,15 @@ export class PacientesService {
     console.log('Hello PacientesProvider Provider');
   }
 
-  getPatients(): Observable<Patient[]> {
-    let url = API_GET_PATIENT ;
-    let options = this.authService.getRequestOptions();
+  getPatientById(id): Observable<Patient[]> {
+      let url = API_GET_PATIENT + id ;
+      let options = this.authService.getRequestOptions();
 
-    return this.http.get(url, options)
-      .map(res => {
-        let data = this.utilitiesService.extractDataFromJSON(res);
-        return data.patients;
-      });
-  }
+      return this.http.get(url, options)
+        .map(res => {
+          let data = this.utilitiesService.extractDataFromJSON(res);
+          return data.patients;
+        });
+    }
 
 }
