@@ -31,7 +31,7 @@ export class HomePage {
                private _us: UsuarioService,
                private _ps: PacientesService,
                private toast: Toast ) {
-                 this._ps.getPatientById(this.patient.patientId)
+                 this._ps.getPatientById(barcodeScanner)
                  .subscribe((response)=>{
                    this.patients = response
                    console.log(this.patients);
@@ -39,13 +39,6 @@ export class HomePage {
 }
 
 scan(){
-  if( !this.platform.is('cordova') ){
-    //this._historialService.agregar_historial( "MATMSG:TO:fernando.herrera85@gmail.com;SUB:Hola Mundo;BODY:Saludos Fernando;;" );
-
-
-    return;
-  }
-
   this.selectedPatient = {};
 
   this.barcodeScanner.scan().then( (barcodeData) => {
