@@ -10,6 +10,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PacientesService {
+  patient: Patient;
+
 
   constructor(public http: Http,
               private authService: AuthService,
@@ -18,7 +20,7 @@ export class PacientesService {
   }
 
   getPatients(): Observable<Patient[]> {
-    let url = API_GET_PATIENT;
+    let url = API_GET_PATIENT ;
     let options = this.authService.getRequestOptions();
 
     return this.http.get(url, options)
