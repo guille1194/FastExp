@@ -1,0 +1,46 @@
+"personal" : {
+	"name": "Guillermo",
+	"lastName": "Navarro",
+		"birthDate": "1994-11-01",
+		"addresses": [
+			{
+				"street": "Cjon. Gloria",
+				"number": "5",
+				"locality": "Anexa 20 de Noviembre",
+				"county": "Tijuana",
+				"state": "Baja California",
+				"country": "Mexico",
+				"zipCode": "22100"
+			}
+		],
+		"phoneNumbers": ["6649230293"],
+		"emergencyContacts": [
+			{
+				"name": "Luis",
+				"lastName": "Perez",
+				"phoneNumbers": ["6648394858"]
+			}
+		],
+		"picture": ""
+	},
+		"medical": {
+		"bloodType": "A+",
+		"chronicDiseases": [
+			{
+				"name": "Ninguno",
+				"treatments": ["Ninguno"]
+			}
+		],
+		"allergies": [
+			{
+				"name": "Huevo",
+				"treatments": ["Inyecciones"]
+			}
+		],
+		"disabilities": [
+			{
+				"name": "ninguno",
+				"type": "ninguno"
+			}
+		]
+	};

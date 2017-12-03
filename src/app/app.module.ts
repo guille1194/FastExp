@@ -12,6 +12,10 @@ import { IonicStorageModule } from '@ionic/storage';
 //servicios
 import { AjustesService } from '../providers/ajustes';
 import { HistorialService } from '../providers/historial';
+import { PacientesService } from '../providers/pacientes';
+import { UsuarioService } from '../providers/usuario';
+import { AuthService } from '../providers/auth.service';
+import { UtilitiesService } from '../providers/utilities.service';
 
 //plugins
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -19,7 +23,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Contacts } from '@ionic-native/contacts';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { UsuarioService } from '../providers/usuario';
+import { Toast } from '@ionic-native/toast';
 
 @NgModule({
   declarations: [
@@ -49,10 +53,14 @@ import { UsuarioService } from '../providers/usuario';
     BarcodeScanner,
     InAppBrowser,
     Contacts,
+    Toast,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AjustesService,
     HistorialService,
-    UsuarioService
+    UsuarioService,
+    PacientesService,
+    AuthService,
+    UtilitiesService
   ]
 })
 export class AppModule {}

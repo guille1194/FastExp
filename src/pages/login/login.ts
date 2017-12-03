@@ -3,16 +3,15 @@ import { NavController, NavParams, ViewController, AlertController } from 'ionic
 
 import { UsuarioService } from '../../providers/usuario';
 import { TabsPage } from '../../pages/tabs/tabs';
+import {LoginModel} from '../../models/login.model';
+
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  userName:string = "";
-  password:string = "";
-
+  user: LoginModel = new LoginModel();
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -32,13 +31,12 @@ export class LoginPage {
 
   ingresar(){
 
-    this._us.ingresar( this.userName, this.password )
+    this._us.signIn( this.user.userName, this.user.password )
             .subscribe( ()=> {
 
-              if( this._us.activo() ){
                 this.navCtrl.push( TabsPage );
                 this.viewCtrl.dismiss(true);
-              }
+
               /*else{
                 let alert = this.alertCtrl.create({
                   title: 'Error Ingreso',

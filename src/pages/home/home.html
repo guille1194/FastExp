@@ -24,9 +24,17 @@
   <ion-icon name="qr-scanner"></ion-icon>
     Realizar Scan
   </button>
-  <ion-card *ngIf="scannedCode">
-    <ion-card-content>
-      Resultado del Scan: {{ scannedCode }}
-    </ion-card-content>
-  </ion-card>
+
+    <ion-card *ngIf="patientFound">
+      <ion-card-header>
+        <h2>Nombre: $ {{personal.name}}</h2>
+        <h2>Apellido: $ {{personal.lastName}}</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <ul>
+          <li>{{medical.bloodType}}</li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+
 </ion-content>
