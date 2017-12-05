@@ -25,14 +25,19 @@
     Realizar Scan
   </button>
 
-    <ion-card *ngIf="patientFound">
+    <ion-card>
       <ion-card-header>
         <h2>Nombre: {{patient.personal.name}}</h2>
         <h2>Apellido: {{patient.personal.lastName}}</h2>
+        <h2>Numero telefono: {{patient.personal.phoneNumbers}}</h2>
+        <h2>Direccion: {{patient.personal.addresses}}</h2>
       </ion-card-header>
       <ion-card-content>
         <ul>
           <li>Tipo de sangre: {{patient.medical.bloodType}}</li>
+          <li>Alergias: {{patient.medical.allergies}}</li>
+          <li>Enfermedades cronicas: {{patient.medical.chronicDiseases}}</li>
+          <li>Numeros emergencia: {{patient.personal.emergencyContacts}}</li>
         </ul>
       </ion-card-content>
     </ion-card>

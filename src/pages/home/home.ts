@@ -21,7 +21,7 @@ export class HomePage {
   patient: Patient;
   patients: Patient[];
   selectedPatient: any;
-  patientFound:boolean = false;
+  //patientFound:boolean = false;
 
   constructor( private barcodeScanner: BarcodeScanner,
                private toastCtrl: ToastController,
@@ -43,7 +43,6 @@ scan(){
   this.barcodeScanner.scan().then( (barcodeData) => {
     this._ps.getPatientById(barcodeData.text).subscribe(data => {
       this.patient = data;
-      this.patientFound = true;
     });
    /*this.selectedPatient = this.patients.find(patient => patient.patientId == barcodeData.text);
    if(this.selectedPatient !== undefined) {
@@ -56,21 +55,19 @@ scan(){
         toast => {
           console.log(toast);*/
 
-        }
-      );
-    }
-
-/*   if(  barcodeData.text != null ){
-     this._historialService.agregar_historial( barcodeData.text );
-   }
+          if(  barcodeData.text != null ){
+            this._historialService.agregar_historial( barcodeData.text );
+          }
 
 
-  }, (err) => {
-      console.error("Error: ", err );
-      this.mostrar_error( "Error: " + err );
-  });
+         }, (err) => {
+             console.error("Error: ", err );
+             this.mostrar_error( "Error: " + err );
+         });
 
-}*/
+       }
+
+
 
 mostrar_error( mensaje:string ){
 
