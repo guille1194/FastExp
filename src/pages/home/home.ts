@@ -54,11 +54,17 @@ scan(){
       this.toast.show('Paciente no encontrado', '5000', 'center').subscribe(
         toast => {
           console.log(toast);*/
+          if(  barcodeData.text != null ){
+               this._historialService.agregar_historial( barcodeData.text );
+             }
 
-        }
-      );
-    }
 
+            }, (err) => {
+                console.error("Error: ", err );
+                this.mostrar_error( "Error: " + err );
+            });
+
+          }
 /*   if(  barcodeData.text != null ){
      this._historialService.agregar_historial( barcodeData.text );
    }
