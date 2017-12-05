@@ -27,12 +27,12 @@
 
     <ion-card *ngIf="patientFound">
       <ion-card-header>
-        <h2>Nombre: {{personal.name}}</h2>
-        <h2>Apellido: {{personal.lastName}}</h2>
+        <h2>Nombre: {{patient.personal.name}}</h2>
+        <h2>Apellido: {{patient.personal.lastName}}</h2>
       </ion-card-header>
       <ion-card-content>
         <ul>
-          <li>{{medical.bloodType}}</li>
+          <li>Tipo de sangre: {{patient.medical.bloodType}}</li>
         </ul>
       </ion-card-content>
     </ion-card>

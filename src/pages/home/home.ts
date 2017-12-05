@@ -22,7 +22,6 @@ export class HomePage {
   patients: Patient[];
   selectedPatient: any;
   patientFound:boolean = false;
-  scannedCode = null;
 
   constructor( private barcodeScanner: BarcodeScanner,
                private toastCtrl: ToastController,
@@ -31,10 +30,10 @@ export class HomePage {
                private _us: UsuarioService,
                private _ps: PacientesService,
                private toast: Toast ) {
-                 this._ps.getPatientById(this.barcodeScanner)
+                 this._ps.getPatientById(barcodeScanner)
                  .subscribe((response)=>{
-                   this.patients = response
-                   console.log(this.patients);
+                   this.patient = response
+                   console.log(this.patient);
                  });
 }
 
@@ -42,7 +41,10 @@ scan(){
   this.selectedPatient = {};
 
   this.barcodeScanner.scan().then( (barcodeData) => {
-   this.selectedPatient = this.patients.find(patient => patient.patientId == barcodeData.text);
+    this._ps.getPatientById(barcodeData.text).subscribe(data => {
+      this.patient = data;
+    });
+   /*this.selectedPatient = this.patients.find(patient => patient.patientId == barcodeData.text);
    if(this.selectedPatient !== undefined) {
       this.patientFound = true;
       console.log(this.selectedPatient);
@@ -51,13 +53,14 @@ scan(){
       this.patientFound = false;
       this.toast.show('Paciente no encontrado', '5000', 'center').subscribe(
         toast => {
-          console.log(toast);
+          console.log(toast);*/
+
         }
       );
     }
 
-   if(  barcodeData.text != null ){
-     this._historialService.agregar_historial( barcodeData.text  );
+/*   if(  barcodeData.text != null ){
+     this._historialService.agregar_historial( barcodeData.text );
    }
 
 
@@ -66,7 +69,7 @@ scan(){
       this.mostrar_error( "Error: " + err );
   });
 
-}
+}*/
 
 mostrar_error( mensaje:string ){
 

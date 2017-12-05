@@ -21,7 +21,7 @@ export class AuthService {
                 headers.append('USER_TOKEN', data.token);
             }
         }
-
+        console.log(session);
         return new RequestOptions({ headers: headers });
     }
 
