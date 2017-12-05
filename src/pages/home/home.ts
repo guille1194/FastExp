@@ -55,19 +55,21 @@ scan(){
         toast => {
           console.log(toast);*/
 
-          if(  barcodeData.text != null ){
-            this._historialService.agregar_historial( barcodeData.text );
-          }
+        }
+      );
+    }
+
+/*   if(  barcodeData.text != null ){
+     this._historialService.agregar_historial( barcodeData.text );
+   }
 
 
-         }, (err) => {
-             console.error("Error: ", err );
-             this.mostrar_error( "Error: " + err );
-         });
+  }, (err) => {
+      console.error("Error: ", err );
+      this.mostrar_error( "Error: " + err );
+  });
 
-       }
-
-
+}*/
 
 mostrar_error( mensaje:string ){
 
