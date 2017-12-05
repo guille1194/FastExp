@@ -43,6 +43,7 @@ scan(){
   this.barcodeScanner.scan().then( (barcodeData) => {
     this._ps.getPatientById(barcodeData.text).subscribe(data => {
       this.patient = data;
+      this.patientFound = true;
     });
    /*this.selectedPatient = this.patients.find(patient => patient.patientId == barcodeData.text);
    if(this.selectedPatient !== undefined) {
