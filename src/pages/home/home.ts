@@ -21,7 +21,7 @@ export class HomePage {
   patient: Patient;
   patients: Patient[];
   selectedPatient: any;
-  //patientFound:boolean = false;
+  patientFound:boolean = false;
 
   constructor( private barcodeScanner: BarcodeScanner,
                private toastCtrl: ToastController,
@@ -30,15 +30,12 @@ export class HomePage {
                private _us: UsuarioService,
                private _ps: PacientesService,
                private toast: Toast ) {
-                 this._ps.getPatientById(barcodeScanner)
-                 .subscribe((response)=>{
-                   this.patient = response
-                   console.log(this.patient);
-                 });
-}
+               }
 
 scan(){
   this.selectedPatient = {};
+
+  this.patientFound = true;
 
   this.barcodeScanner.scan().then( (barcodeData) => {
     this._ps.getPatientById(barcodeData.text).subscribe(data => {

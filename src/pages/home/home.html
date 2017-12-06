@@ -26,9 +26,10 @@
   </button>
 
     <ion-card>
-      <ion-card-header>
+      <ion-card-header *ngIf="patientFound">
         <h2>Nombre: {{patient.personal.name}}</h2>
         <h2>Apellido: {{patient.personal.lastName}}</h2>
+        <h2>Direccion: {{patient.personal.addresses[0].street}}</h2>
       </ion-card-header>
       <ion-card-content>
         <ul>
