@@ -17,25 +17,22 @@
 
 <ion-content padding>
 
-  <button ion-button
-          block
-          icon-left
-          (click)="scan()">
-  <ion-icon name="qr-scanner"></ion-icon>
-    Realizar Scan
+  <button ion-button block icon-left (click)="scan()">
+    <ion-icon name="qr-scanner"></ion-icon> Realizar Scan 
   </button>
 
-    <ion-card>
-      <ion-card-header *ngIf="patientFound">
-        <h2>Nombre: {{patient.personal.name}}</h2>
-        <h2>Apellido: {{patient.personal.lastName}}</h2>
-        <h2>Direccion: {{patient.personal.addresses[0].street}}</h2>
-      </ion-card-header>
-      <ion-card-content>
-        <ul>
-          <li>Tipo de sangre: {{patient.medical.bloodType}}</li> 
-        </ul>
-      </ion-card-content>
-    </ion-card>
-
+  <ion-card>
+    <div *ngIf="patientFound" >
+        <ion-card-header>
+            <h2>Nombre: {{patient.patients[0].personal.name}}</h2>
+            <h2>Apellido: {{patient.patients[0].personal.lastName}}</h2>
+            <h2>Direccion: {{patient.patients[0].personal.addresses[0].street}}</h2>
+          </ion-card-header>
+          <ion-card-content>
+            <ul>
+              <li>Tipo de sangre: {{patient.patients[0].medical.bloodType}}</li> 
+            </ul>
+          </ion-card-content>
+    </div>
+  </ion-card>
 </ion-content>
