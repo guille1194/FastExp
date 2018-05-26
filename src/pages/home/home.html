@@ -18,21 +18,36 @@
 <ion-content padding>
 
   <button ion-button block icon-left (click)="scan()">
-    <ion-icon name="qr-scanner"></ion-icon> Realizar Scan 
+    <ion-icon name="qr-scanner"></ion-icon> Realizar Scan
   </button>
 
   <ion-card>
     <div *ngIf="patientFound" >
         <ion-card-header>
-            <h2>Nombre: {{patient.patients[0].personal.name}}</h2>
-            <h2>Apellido: {{patient.patients[0].personal.lastName}}</h2>
-            <h2>Direccion: {{patient.patients[0].personal.addresses[0].street}}</h2>
+          <h1> Datos personales </h1>
+          <ul>
+            <li>Nombre: {{patient.patients[0].personal.name}}</li>
+            <li>Apellido: {{patient.patients[0].personal.lastName}}</li>
+            <li>Direccion: {{patient.patients[0].personal.addresses[0].street}}</li>
+            <li>Numero de emergencia: {{patient.patients[0].personal.emergencyContacts[0].phoneNumbers}}</li>
+          </ul>
           </ion-card-header>
-          <ion-card-content>
-            <ul>
-              <li>Tipo de sangre: {{patient.patients[0].medical.bloodType}}</li> 
-            </ul>
-          </ion-card-content>
+    </div>
+  </ion-card>
+  <ion-card>
+    <div *ngIf="patientFound" >
+      <ion-card-header>
+        <h1> Datos medicos </h1>
+        <ul>
+          <li>Tipo de sangre: {{patient.patients[0].medical.bloodType}}</li>
+          <li>Discapacidades: {{patient.patients[0].medical.disabilities[0].name}}</li>
+          <li>Tratamientos: {{patient.patients[0].medical.disabilities[0].treatments}}</li>
+          <li>Alergias: {{patient.patients[0].medical.allergies[0].name}}</li>
+          <li>Tratamientos: {{patient.patients[0].medical.allergies[0].treatments}}</li>
+          <li>Enfermad cronica: {{patient.patients[0].medical.chronicDiseases[0].name}}</li>
+          <li>Tratamientos: {{patient.patients[0].medical.chronicDiseases[0].treatments}}</li>
+        </ul>
+      </ion-card-header>
     </div>
   </ion-card>
 </ion-content>

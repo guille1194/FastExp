@@ -11,7 +11,7 @@ import { HistorialService } from "../../providers/historial";
 import { UsuarioService } from '../../providers/usuario';
 import { PacientesService } from '../../providers/pacientes';
 import { Patient } from '../../models/patient.model';
-import {MOCK_PATIENT} from '../../config/url.servicios';
+//import {MOCK_PATIENT} from '../../config/url.servicios';
 
 @Component({
   selector: 'page-home',
@@ -29,17 +29,17 @@ export class HomePage {
   }
 
 scan(){
-    
-  this.patient = MOCK_PATIENT
-  
+
+// this.patient = MOCK_PATIENT
+
   this.selectedPatient = {};
 
   this.patientFound = true;
 
-  // this.barcodeScanner.scan().then( (barcodeData) => {
-  //    this._ps.getPatientById(barcodeData.text).subscribe(data => {
-  //      this.patient = data;
-  //    });
+   this.barcodeScanner.scan().then( (barcodeData) => {
+      this._ps.getPatientById(barcodeData.text).subscribe(data => {
+        this.patient = data;
+      });
   //  this.selectedPatient = this.patients.find(patient => patient.patientId == barcodeData.text);
   //  if(this.selectedPatient !== undefined) {
   //     this.patientFound = true;
@@ -50,17 +50,17 @@ scan(){
   //     this.toast.show('Paciente no encontrado', '5000', 'center').subscribe(
   //       toast => {
   //         console.log(toast);
-  //         if(  barcodeData.text != null ){
-  //              this._historialService.agregar_historial( barcodeData.text );
-  //            }
+           if(  barcodeData.text != null ){
+                this._historialService.agregar_historial( barcodeData.text );
+              }
 
 
-  //           }, (err) => {
-  //               console.error("Error: ", err );
-  //               this.mostrar_error( "Error: " + err );
-  //           });
+             }, (err) => {
+                 console.error("Error: ", err );
+                 this.mostrar_error( "Error: " + err );
+             });
 
-  //         }
+           }
   //   if(  barcodeData.text != null ){
   //    this._historialService.agregar_historial( barcodeData.text );
   //  }
@@ -71,7 +71,7 @@ scan(){
   //     this.mostrar_error( "Error: " + err );
   // });
 
-}
+//}
 
 mostrar_error( mensaje:string ){
 
